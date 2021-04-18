@@ -9,13 +9,13 @@
 
 get_header();
 ?>
-//////// test
 	<main id="primary" class="site-main">
 
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
+				
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
@@ -23,13 +23,19 @@ get_header();
 			<section class="galerie">
 			<?php
 			/* Start the Loop */
+
+			$imgNum = 0;
 			while ( have_posts() ) :
 				the_post();
+				$imgNum = $imgNum + 1;
 ?>
-
+			<div class="<?= "img-" . $imgNum;  ?>">
 <?php
 				get_template_part('template-parts/content', 'projets');
+?>
+			</div>
 
+<?php
 			endwhile;
 ?>
 			</section>
